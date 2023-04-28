@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        #box{
+            width: 400px;
+            background-color: pink;
+            text-align: center;
+            padding: 100px 0;
+            display: inline-block;
+            margin: 30px;
+        }
+        li{
+            background-color: cornflowerblue;
+            list-style-type: none;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-around;
+            width: 400px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+        }
+        .fav{
+            background-color: blueviolet;
+            color: white;
+        }
+    </style>
+    <title>Document</title> 
+</head>
+<body>
+    
+<div id="app">
+
+    <a :href="url"> {{word}} </a>
+    
+    <!-- <a v-bind:href="url"> {{word}} </a> -->
+     <!-- <a href="http://www.google.com"> click here </a> -->
+<div v-if="showBook">          
+    
+<div>
+<ul>
+    <li v-for="book in filterbooks" :class="{fav:!book.isFav}" @click="toggleFav(book)">
+        <img :src="book.image" :alt="book.tittle">
+book tittle is {{book.tittle}} and book author name is {{book.author}}
+    </li>
+</ul>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<ul>
+    <li v-for="book in filterbooks" :class="{fav:!book.isFav}" @click="toggleFav(book)">
+        <img :src="book.image" :alt="book.tittle">
+book tittle is {{book.tittle}} and book author name is {{book.author}}
+    </li>
+</ul>
+
+
+</div>
+
+
+    <h1>{{title}}</h1>
+    <h2>{{author}}</h2>
+    <h3>{{age}}</h3>
+    
+    <button v-on:click="age++">increase age</button>
+    <button v-on:click="age--">decrease age</button>
+    <button v-on:click="changeAuthorName('mai ahmed')">chane name</button>
+    
+</div>
+
+<button v-on:click="toggleShowBook">
+<span v-if="showBook"> hide </span>
+<span v-if="!showBook"> show </span>
+</button>
+
+<h1 v-show="showBook"> now you can see the book </h1>
+
+<div id="box" @mouseover="handleEvenet"> on mouse (enter) </div>
+<div id="box" @mouseleave="handleEvenet"> on mouseLeave  </div>
+<div id="box" @dblclick="handleEvenet"> on mouse double click</div>
+<div id="box" @mousemove="handlemousemove($event,'maioo')"> on mousemove {{x}}+{{y}}</div>
+
+
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>
